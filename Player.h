@@ -17,7 +17,7 @@ public:
      * @param force
      */
 
-    Player(const char* const name, int maxHP=100,int force=5);
+    Player(const char* name, int maxHP=MAX_DEFAULT_HP,int force=MAX_DEFAULT_FORCE);
 /**
  *
  * @param name
@@ -52,12 +52,17 @@ public:
 
 
 private:
-    const char* const m_name;
+    const char* m_name;
     int m_level;
     int m_force;
     int m_maxHP;
     int m_HP;
     int m_coins;
+    static const int MAX_LEVEL=10;
+    static const int MAX_DEFAULT_HP=100;
+    static const int MAX_DEFAULT_FORCE=5;
+
+
 };
 
 
