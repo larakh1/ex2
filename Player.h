@@ -22,11 +22,11 @@ public:
  * @param maxHP
  * @param force
  */
-    Player(const Player& player);
+    Player(const Player& player)=default;
 
-    ~Player();
+    ~Player()=default;
 
-    Player& operator=(const Player& player);
+    Player& operator=(const Player& player)=default;
 
     void printInfo() const;
 
