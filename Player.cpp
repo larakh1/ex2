@@ -31,7 +31,7 @@ Player::Player(const char* const name, int maxHP, int force) :
    }
 
    bool Player::isKnockedOut() const {
-       return m_level==0;
+       return m_HP==0;
    }
 
    bool Player::pay(const int price) {
