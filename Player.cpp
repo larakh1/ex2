@@ -16,8 +16,6 @@ m_name(name),m_maxHP(maxHP),m_HP(maxHP),m_force(force),m_level(1),m_coins(0)
         m_force = MAX_DEFAULT_FORCE;
     }
 
-
-
 }
 
 
