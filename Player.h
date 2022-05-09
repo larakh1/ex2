@@ -2,6 +2,8 @@
 #define EX2_Player_H
 
 #include <iostream>
+#include "utilities.h"
+
 
 using std::string;
 
