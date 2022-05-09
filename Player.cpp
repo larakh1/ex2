@@ -35,7 +35,7 @@ Player::Player(const char* const name, int maxHP, int force) :
    }
 
    bool Player::pay(const int price) {
-       if(m_coins-price<=0)
+       if(m_coins-price<0)
        {
            return false;
        }
