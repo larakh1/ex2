@@ -59,21 +59,25 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& game)
 
 GameStatus Mtmchkin::getGameStatus() const
 {
-   if(m_player.getLevel()==10)
-   {
-       return GameStatus::Win;
-   }
+    return m_gameStatus;
+}
+
+void Mtmchkin::updatedStatus()
+{
+    if(m_player.getLevel()==10)
+    {
+        m_gameStatus=GameStatus::Win;
+    }
     if (m_player.isKnockedOut())
     {
-        return GameStatus::Loss;
+        m_gameStatus=GameStatus::Loss;
     }
-
-    return m_gameStatus;
+    m_gameStatus=GameStatus::MidGame;
 }
 
 
 bool Mtmchkin::isOver()
- {
+{
     if(getGameStatus()==GameStatus::MidGame)
     {
         return  false;
@@ -82,11 +86,11 @@ bool Mtmchkin::isOver()
     {
         return true;
     }
- }
+}
 
 
- void Mtmchkin::playNextCard()
- {
+void Mtmchkin::playNextCard()
+{
     while(!this->isOver())
     {
         int index=0;
@@ -96,9 +100,9 @@ bool Mtmchkin::isOver()
             {
                 m_cardsArray[index].printInfo();
                 m_cardsArray[index].applyEncounter(m_player);
+                updatedStatus();
                 m_player.printInfo();
             }
         }
     }
- }
- 
+}
