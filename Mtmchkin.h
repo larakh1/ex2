@@ -57,7 +57,7 @@ public:
      */
     GameStatus getGameStatus() const;
 /**
- * updating game status 
+ * updating game status
  */
     void updatedStatus();
 
@@ -77,8 +77,11 @@ private:
  int m_numOfCards;
  GameStatus m_gameStatus;
  Player m_player;
+ int m_currentCard;
+static const int DEFAULT_CURRENT_CARD=0;
 
- static Card* allocateAndCopy(const Card* cardsArray,int numOfCards);
+
+    static Card* allocateAndCopy(const Card* cardsArray,int numOfCards);
 
 
 };
