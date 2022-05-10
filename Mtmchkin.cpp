@@ -69,11 +69,18 @@ void Mtmchkin::updatedStatus()
     {
         m_gameStatus=GameStatus::Win;
     }
-    if (m_player.isKnockedOut())
-    {
-        m_gameStatus=GameStatus::Loss;
+   else
+   {
+        if (m_player.isKnockedOut())
+        {
+            m_gameStatus = GameStatus::Loss;
+        }
+        else
+        {
+            m_gameStatus = GameStatus::MidGame;
+        }
     }
-    m_gameStatus=GameStatus::MidGame;
+
 }
 
 
@@ -92,18 +99,21 @@ bool Mtmchkin::isOver()
 
 void Mtmchkin::playNextCard()
 {
-    while(!this->isOver())
+    while(!isOver())
     {
         int index=0;
         for (;  index<m_numOfCards ; index++)
         {
-            while (!this->isOver())
-            {
+
                 m_cardsArray[index].printInfo();
                 m_cardsArray[index].applyEncounter(m_player);
                 updatedStatus();
                 m_player.printInfo();
-            }
+                if(isOver())
+                {
+                    break;
+                }
+
         }
     }
 }
