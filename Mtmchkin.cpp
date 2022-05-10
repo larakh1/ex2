@@ -52,6 +52,7 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& game)
         newCard[i].operator=(game.m_cardsArray[i]);
     }
     m_cardsArray=newCard;
+    return *this;
 }
 
 
