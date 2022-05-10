@@ -5,7 +5,7 @@
 
 Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards):
 m_playerName(playerName),m_cardsArray(allocateAndCopy(cardsArray,numOfCards)),m_numOfCards(numOfCards), m_gameStatus(GameStatus::MidGame),
-m_player(playerName)
+m_player(playerName),m_currentCard(DEFAULT_CURRENT_CARD)
 
 {}
 
@@ -22,7 +22,7 @@ Card* Mtmchkin::allocateAndCopy(const Card* cardsArray,int numOfCards)
 
 Mtmchkin::Mtmchkin(const Mtmchkin& game):
 m_playerName(game.m_playerName),m_cardsArray(allocateAndCopy(game.m_cardsArray,game.m_numOfCards)),m_numOfCards(game.m_numOfCards)
-,m_gameStatus(game.m_gameStatus), m_player(game.m_player)
+,m_gameStatus(game.m_gameStatus), m_player(game.m_player),m_currentCard(DEFAULT_CURRENT_CARD)
 
 {
 }
@@ -46,6 +46,7 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& game)
     m_numOfCards=game.m_numOfCards;
     m_playerName=game.m_playerName;
     m_gameStatus=game.m_gameStatus;
+    m_currentCard=game.m_currentCard;
     m_player.operator=(game.m_player);
     for(int i=0;i<m_numOfCards;i++)
     {
@@ -99,21 +100,17 @@ bool Mtmchkin::isOver()
 
 void Mtmchkin::playNextCard()
 {
-    while(!isOver())
-    {
-        int index=0;
-        for (;  index<m_numOfCards ; index++)
-        {
+  if(m_currentCard==m_numOfCards)
+  {
+      m_currentCard=0;
+  }
 
-                m_cardsArray[index].printInfo();
-                m_cardsArray[index].applyEncounter(m_player);
+
+                m_cardsArray[m_currentCard].printInfo();
+                m_cardsArray[m_currentCard].applyEncounter(m_player);
                 updatedStatus();
                 m_player.printInfo();
-                if(isOver())
-                {
-                    break;
-                }
+                m_currentCard++;
 
-        }
-    }
+
 }
