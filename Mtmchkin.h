@@ -57,12 +57,28 @@ public:
      */
     GameStatus getGameStatus() const;
 
-    //TODO: complete the Mtmchkin class.
+
+   /**
+    * copy constructor, destructor,assignment operator
+    */
+    Mtmchkin(const Mtmchkin&);
+    
+    ~Mtmchkin();
+    
+    Mtmchkin& operator=(const Mtmchkin&);
 
 private:
-    //TODO: complete the Mtmchkin class.
+ const char* m_playerName;
+ const Card* m_cardsArray;
+ int m_numOfCards;
+ GameStatus m_gameStatus;
+ Player m_player;
+
+ static Card* allocateAndCopy(const Card* cardsArray,int numOfCards);
 
 };
+
+
 
 
 #endif //EX2_GAME_H
