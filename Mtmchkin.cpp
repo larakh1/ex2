@@ -72,3 +72,33 @@ GameStatus Mtmchkin::getGameStatus() const
 }
 
 
+bool Mtmchkin::isOver()
+ {
+    if(getGameStatus()==GameStatus::MidGame)
+    {
+        return  false;
+    }
+    else
+    {
+        return true;
+    }
+ }
+
+
+ void Mtmchkin::playNextCard()
+ {
+    while(!this->isOver())
+    {
+        int index=0;
+        for (;  index<m_numOfCards ; index++)
+        {
+            while (!this->isOver())
+            {
+                m_cardsArray[index].printInfo();
+                m_cardsArray[index].applyEncounter(m_player);
+                m_player.printInfo();
+            }
+        }
+    }
+ }
+ 
