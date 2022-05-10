@@ -56,15 +56,19 @@ public:
      *          GameStatus - the current status of the running game
      */
     GameStatus getGameStatus() const;
+/**
+ * updating game status 
+ */
+    void updatedStatus();
 
 
    /**
     * copy constructor, destructor,assignment operator
     */
     Mtmchkin(const Mtmchkin&);
-    
+
     ~Mtmchkin();
-    
+
     Mtmchkin& operator=(const Mtmchkin&);
 
 private:
@@ -75,6 +79,7 @@ private:
  Player m_player;
 
  static Card* allocateAndCopy(const Card* cardsArray,int numOfCards);
+
 
 };
 
