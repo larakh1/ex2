@@ -5,15 +5,24 @@
 using std::string;
 
 Player::Player(const char* name, int maxHP, int force) :
-m_name(name),m_maxHP(maxHP),m_HP(maxHP),m_force(force),m_level(1),m_coins(0)
+        m_name(name),m_level(1),m_coins(0)
 {   if(maxHP<=0)
     {
         m_maxHP = MAX_DEFAULT_HP;
         m_HP=MAX_DEFAULT_HP;
     }
+    else
+    {
+        m_maxHP=maxHP;
+        m_HP=maxHP;
+    }
     if(force<=0)
     {
         m_force = MAX_DEFAULT_FORCE;
+    }
+    else
+    {
+    m_force=force;
     }
 
 }
@@ -33,7 +42,7 @@ int Player::getLevel() const {
 void Player::heal(const int add)
 { if (add<0)
     {
-    return;
+        return;
     }
     if(m_HP!=m_maxHP)
     {
@@ -50,10 +59,10 @@ bool Player::isKnockedOut() const {
 }
 
 bool Player::pay(const int price) {
- if (price<=0)
- {
-     return true;
- }
+    if (price<=0)
+    {
+        return true;
+    }
     if(m_coins-price<0)
     {
         return false;
@@ -106,5 +115,4 @@ int Player::getAttackStrength() const
 {
     return m_force+m_level;
 }
-
 
