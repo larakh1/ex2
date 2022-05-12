@@ -18,17 +18,17 @@ void Card::applyEncounter(Player& player) const {
     }
 
     if (m_effect == CardType::Battle) {
-        bool isWinner = false;
+
         if (player.getAttackStrength() >= m_stats.force) {
             player.levelUp();
             player.addCoins(m_stats.loot);
-            isWinner = true;
+            bool isWinner = true;
             printBattleResult(isWinner);
         } else {
             player.damage(m_stats.hpLossOnDefeat);
-            if (player.isKnockedOut()) {
-                printBattleResult(isWinner);
-            }
+
+                bool check=false;
+                printBattleResult(check);
         }
     }
 }
@@ -54,4 +54,5 @@ void Card::applyEncounter(Player& player) const {
             printBattleCardInfo(m_stats);
         }
     }
+
 
